@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEL芳療精油抓週系統 |SEL Essential Oil Intuitive Draw</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <!-- Audio Elements -->
+    <audio id="bgm-audio" loop>
+        <!-- Place a relaxing ambient sound in the audio/ folder. Using fallback source structure -->
+        <source src="audio/bgm.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hover-audio" preload="auto">
+        <source src="audio/hover.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-audio" preload="auto">
+        <source src="audio/click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="reveal-audio" preload="auto">
+        <source src="audio/reveal.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="background-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+        <header>
+            <div class="header-content">
+                <h1 class="title">SEL芳療精油抓週系統</h1>
+                <button id="bgm-toggle" class="bgm-toggle" title="開關背景音樂"><i class="fa-solid fa-music"></i> BGM
+                    Off</button>
+            </div>
+            <p class="subtitle">Essential Oil Intuitive Draw</p>
+            <p class="instruction" id="instruction-text">靜下心來，默念心中的問題或祈願，然後從下方憑直覺抽取一張牌卡。</p>
+        </header>
+
+        <section class="deck-container" id="deck-container">
+            <!-- Cards will be injected by JavaScript -->
+        </section>
+
+        <!-- Result Modal -->
+        <div class="modal-overlay" id="result-modal">
+            <div class="modal-content glass-panel" id="modal-content-panel">
+                <button class="close-btn" id="close-btn">&times;</button>
+                <div class="result-card-container" id="result-card-container">
+                    <div class="result-card" id="result-card">
+                        <!-- Front of card (back design) initially showing -->
+                        <div class="card-face card-back">
+                            <div class="card-back-inner">
+                                <div class="ornament"><i class="fa-solid fa-leaf"></i></div>
+                            </div>
+                        </div>
+                        <!-- Back of card (the oil result) -->
+                        <div class="card-face card-front" id="result-front">
+                            <div class="oil-icon" id="oil-icon">🌿</div>
+                            <div class="oil-info-scroll">
+                                <h2 class="oil-name" id="oil-name">薰衣草</h2>
+                                <h3 class="oil-en-name" id="oil-en-name">Lavender</h3>
+                                <div class="divider"></div>
+                                <div class="sel-tag" id="sel-competency">自我管理 (Self-Management)</div>
+                                <p class="oil-keyword" id="oil-keyword">「平靜與安穩」</p>
+                                <p class="oil-description" id="oil-description">
+                                    這支精油提醒你，是時候放下焦慮與重擔。給自己一個深呼吸的機會，在混亂中尋找內在的寧靜，讓身心得到全然的放鬆與修復。</p>
+
+                                <div class="sel-section">
+                                    <div class="sel-label"><i class="fa-solid fa-seedling"></i> 覺察時刻</div>
+                                    <p class="sel-text" id="sel-question">我現在身體哪裡感覺最緊繃？我可以如何放鬆它？</p>
+                                </div>
+
+                                <div class="sel-section">
+                                    <div class="sel-label"><i class="fa-solid fa-wand-magic-sparkles"></i> 行動指引</div>
+                                    <p class="sel-text" id="sel-action">深呼吸三次，將注意力拉回當下。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn" id="reset-btn">重新抓週</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        Copyright &copy; Liyuchiutiger Gongminshen
+    </footer>
+
+    <!-- Mascot -->
+    <div id="mascot" class="mascot">
+        <img src="image/LiyuChillGuy.svg" alt="LiyuChillGuy" draggable="false">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
